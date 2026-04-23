@@ -2,7 +2,6 @@
 // src/pages/articles.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
-import ComingSoonWrapper from '../components/ComingSoonWrapper.astro';
 import { getCollection } from 'astro:content';
 
 // 記事一覧を取得（下書き以外）
@@ -20,17 +19,10 @@ articles.forEach((article) => {
   articlesByCategory[category].push(article);
 });
 
-// デバッグ情報
-console.log('Articles found:', articles.length);
-articles.forEach((article, index) => {
-  console.log(`Article ${index + 1}:`, article.data.title);
-});
-
 const pageTitle = "Articles | 記事一覧";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <ComingSoonWrapper>
     <main class="pt-16">
     <!-- ヒーローセクション -->
     <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden">
@@ -104,5 +96,4 @@ const pageTitle = "Articles | 記事一覧";
       </div>
     </section>
   </main>
-  </ComingSoonWrapper>
 </BaseLayout> 

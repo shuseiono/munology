@@ -1,7 +1,6 @@
 ---
 // src/pages/articles/[slug].astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ComingSoonWrapper from '../../components/ComingSoonWrapper.astro';
 import { getCollection } from 'astro:content';
 
 // 動的ルートの生成
@@ -23,7 +22,6 @@ const shareTitle = article.data.title;
 ---
 
 <BaseLayout pageTitle={article.data.title}>
-  <ComingSoonWrapper>
     <main class="pt-16">
     <!-- 記事ヘッダー -->
     <section class="relative py-16 md:py-24 px-6 overflow-hidden">
@@ -131,7 +129,6 @@ const shareTitle = article.data.title;
       </div>
     </section>
   </main>
-  </ComingSoonWrapper>
 </BaseLayout>
 
 <script>
