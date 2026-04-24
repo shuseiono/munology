@@ -2,47 +2,52 @@
 // src/pages/privacy-policy.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "プライバシー・ポリシー | MUNOLOGY";
+const pageTitle = "プライバシーポリシー | MUNOLOGY";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <main class="pt-16">
-      <section class="container mx-auto px-6 py-12">
-        <h1 class="text-4xl md:text-5xl font-black mb-8 hero-gradient-text tracking-tight font-noto">プライバシー・ポリシー</h1>
-        
-        <div class="max-w-4xl mx-auto text-gray-300 space-y-8">
+    <div class="page-main pt-16">
+      <header class="page-hero">
+        <div class="page-hero-inner">
+          <h1 class="page-display-title">プライバシーポリシー</h1>
+          <p class="page-lead text-base">当サイトにおける個人情報の取り扱いについて定めます。</p>
+        </div>
+      </header>
+
+      <section class="container mx-auto px-6 py-12 md:py-16">
+        <div class="max-w-4xl mx-auto text-mun-text-secondary space-y-8">
           <p class="text-lg leading-relaxed">MUNOLOGY運営者（以下「当方」といいます。）は、当方が運営するウェブサイト「MUNOLOGY」（以下「当サイト」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます。）を定めます。</p>
 
           <div class="space-y-6">
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">第1条（個人情報の利用目的）</h2>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-mun-text">第1条（個人情報の利用目的）</h2>
               <div class="space-y-4 text-lg leading-relaxed">
                 <p>当サイトでは、お問い合わせの際に、名前（ハンドルネーム）、メールアドレス等の個人情報をご登録いただく場合がございます。<br />
                 これらの個人情報は、質問に対する回答や必要な情報を電子メール等でご連絡する場合に利用させていただくものであり、この目的以外では利用いたしません。</p>
-                <p>また、当サイトのお問い合わせフォームでは、マーケティングプラットフォームとして <strong class="text-blue-400">Brevo</strong> を利用しています。フォーム送信時にご提供いただいた個人情報は、<a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">Brevoのプライバシーポリシー</a>に従い、Brevoに転送・管理されます。フォームを送信することで、これに同意したものとみなされます。</p>
+                <p>また、当サイトのお問い合わせフォームでは、マーケティングプラットフォームとして <strong class="text-mun-accent">Brevo</strong> を利用しています。フォーム送信時にご提供いただいた個人情報は、<a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-mun-link hover:text-mun-accent underline">Brevoのプライバシーポリシー</a>に従い、Brevoに転送・管理されます。フォームを送信することで、これに同意したものとみなされます。</p>
               </div>
             </div>
 
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">第2条（アクセス解析ツールについて）</h2>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-mun-text">第2条（アクセス解析ツールについて）</h2>
               <div class="space-y-4 text-lg leading-relaxed">
                 <p>当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。このGoogleアナリティクスはトラフィックデータの収集のためにCookieを使用しております。</p>
-                <p>このトラフィックデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。本規約に関して、詳しくは<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">Googleアナリティクス利用規約</a>をご覧ください。</p>
+                <p>このトラフィックデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。本規約に関して、詳しくは<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener noreferrer" class="text-mun-link hover:text-mun-accent underline">Googleアナリティクス利用規約</a>をご覧ください。</p>
               </div>
             </div>
 
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">第3条（広告の配信について）</h2>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-mun-text">第3条（広告の配信について）</h2>
               <div class="space-y-4 text-lg leading-relaxed">
                 <ol class="list-decimal list-inside space-y-2">
                   <li>当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。</li>
-                  <li>当サイトでは、第三者配信の広告サービス（Googleアドセンス）を利用する可能性があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookieを使用することがあります。Cookieを無効にする設定およびGoogleアドセンスに関する詳細は<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">広告 – ポリシーと規約 – Google</a>をご覧ください。</li>
+                  <li>当サイトでは、第三者配信の広告サービス（Googleアドセンス）を利用する可能性があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookieを使用することがあります。Cookieを無効にする設定およびGoogleアドセンスに関する詳細は<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-mun-link hover:text-mun-accent underline">広告 – ポリシーと規約 – Google</a>をご覧ください。</li>
                 </ol>
               </div>
             </div>
 
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">第4条（個人情報の第三者への開示）</h2>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-mun-text">第4条（個人情報の第三者への開示）</h2>
               <div class="space-y-4 text-lg leading-relaxed">
                 <p>当サイトでは、個人情報は適切に管理し、以下に該当する場合を除いて第三者に開示することはありません。</p>
                 <ul class="list-disc list-inside space-y-2">
@@ -53,7 +58,7 @@ const pageTitle = "プライバシー・ポリシー | MUNOLOGY";
             </div>
 
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">第5条（免責事項）</h2>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-mun-text">第5条（免責事項）</h2>
               <div class="space-y-4 text-lg leading-relaxed">
                 <p>当サイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。</p>
                 <p>当サイトのコンテンツ・情報につきまして、可能な限り正確な情報を掲載するよう努めておりますが、誤情報が入り込んだり、情報が古くなっていることもございます。当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。</p>
@@ -61,24 +66,24 @@ const pageTitle = "プライバシー・ポリシー | MUNOLOGY";
             </div>
 
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">第6条（プライバシーポリシーの変更について）</h2>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-mun-text">第6条（プライバシーポリシーの変更について）</h2>
               <div class="space-y-4 text-lg leading-relaxed">
                 <p>当サイトは、個人情報に関して適用される日本の法令を遵守するとともに、本ポリシーの内容を適宜見直しその改善に努めます。修正された最新のプライバシーポリシーは、常に本ページにて開示されます。</p>
               </div>
             </div>
 
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">第7条（お問い合わせ）</h2>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-mun-text">第7条（お問い合わせ）</h2>
               <div class="space-y-4 text-lg leading-relaxed">
-                <p>本ポリシーに関するお問い合わせは、<a href="/contact" class="text-blue-400 hover:text-blue-300 underline">お問い合わせフォーム</a>よりお願いいたします。</p>
+                <p>本ポリシーに関するお問い合わせは、<a href="/contact" class="text-mun-link hover:text-mun-accent underline">お問い合わせフォーム</a>よりお願いいたします。</p>
               </div>
             </div>
 
-            <div class="pt-8 border-t border-gray-700">
-              <p class="text-lg font-semibold text-white"><strong>制定日：2025年7月31日</strong></p>
+            <div class="pt-8 border-t border-mun-border">
+              <p class="text-lg font-semibold text-mun-text"><strong>制定日：2025年7月31日</strong></p>
             </div>
           </div>
         </div>
       </section>
-    </main>
+    </div>
 </BaseLayout>

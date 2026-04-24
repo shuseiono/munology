@@ -1,11 +1,9 @@
 ---
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
 import Card from '../components/Card.astro';
 import Badge from '../components/Badge.astro';
 import Button from '../components/Button.astro';
-import Icon from '../components/Icon.astro';
 import Grid from '../components/Grid.astro';
 import Stack from '../components/Stack.astro';
 
@@ -13,204 +11,161 @@ const pageTitle = "Home | MUNOLOGY";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <main id="main-content">
-        <!-- ヒーローセクション -->
-      <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden min-h-[800px] flex items-center" style="background: url('/images/index_fv.png') center 0%/cover no-repeat;">
-        <!-- 背景のグラデーションと暗いオーバーレイ -->
-        <div class="absolute inset-0 z-0" style="background: linear-gradient(rgba(20,20,40,0.7), rgba(20,20,40,0.7)), radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.3), transparent 70%);"></div>
-        <div class="relative z-10 container mx-auto flex flex-col items-center">
-          <!-- キャッチコピー -->
-          <h1 class="text-5xl md:text-7xl font-black mb-6 hero-gradient-text tracking-tight font-noto animate-fade-in">
-            DRの向こう側へ
-          </h1>
-          <p class="max-w-3xl text-xl md:text-2xl text-gray-300 mb-12 font-noto leading-relaxed">
-            MUNOLOGYは、会議の体験をより深い洞察に導き、高校以上の学びへと繋げていくためのサイトです。模擬国連に関連したトピックを、法学・政治学の観点から探究します。
-          </p>
-          <!-- CTAボタン -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/articles" variant="primary" size="large" ariaLabel="記事一覧ページに移動">
-              <Icon name="book" size="small" class="mr-2" />
-              記事を読む
-            </Button>
-            <Button href="/about" variant="secondary" size="large" ariaLabel="詳細ページに移動">
-              <Icon name="info" size="small" class="mr-2" />
+  <div class="page-main">
+    <!-- ヒーロー: 画像＋単純な暗幕。見出しはグラデーションを使わない -->
+    <section
+      class="relative flex min-h-[min(85vh,52rem)] items-center px-6 py-20 md:py-28"
+      style="background: url('/images/index_fv.png') center/cover no-repeat;"
+    >
+      <div class="absolute inset-0 bg-mun-bg/82" aria-hidden="true"></div>
+      <div class="relative z-10 container mx-auto max-w-3xl">
+        <h1 class="page-display-title text-4xl md:text-5xl lg:text-6xl">
+          DRの向こう側へ
+        </h1>
+        <p class="page-lead mt-6">
+          MUNOLOGYは、会議の体験をより深い洞察に導き、高校以上の学びへと繋げていくためのサイトです。模擬国連に関連したトピックを、法学・政治学の観点から探究します。
+        </p>
+        <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Button href="/articles" variant="primary" size="large" ariaLabel="記事一覧へ">
+            記事を読む
+          </Button>
+          <Button href="/about" variant="secondary" size="large" ariaLabel="MUNOLOGYについて">
+            このサイトについて
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- おすすめ記事 -->
+    <section id="articles" class="border-t border-mun-border py-16 md:py-20">
+      <div class="container mx-auto px-6">
+        <div class="mb-12 max-w-3xl">
+          <h2 class="section-heading text-2xl md:text-3xl">おすすめ記事</h2>
+          <p class="section-lead">模擬国連に関連した記事から一部を掲載しています。</p>
+        </div>
+
+        <Grid cols={3} gap="large">
+          <Card href="/articles/icj-climate-change" ariaLabel="気候変動に関するICJ勧告的意見" variant="info">
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <Badge variant="info">最新動向</Badge>
+              <time class="text-xs text-mun-text-muted whitespace-nowrap" datetime="2024-07-25">2024.07.25</time>
+            </div>
+            <h3 class="font-semibold text-lg mb-3 min-h-[3.5rem] font-noto text-mun-text group-hover:text-sky-300 transition-colors">
+              速報解説：気候変動に関するICJ勧告的意見
+            </h3>
+            <p class="text-mun-text-muted text-sm mb-6 leading-relaxed line-clamp-4">
+              UNFCCCやパリ協定の法的拘束力、Lex Specialisといった法理を解説し、国際法における気候変動問題の新たな展開を分析します。
+            </p>
+            <span class="text-sm font-medium text-sky-400 group-hover:text-sky-300 border-b border-transparent group-hover:border-sky-400/50 transition-colors">
+              続きを読む
+            </span>
+          </Card>
+
+          <Card href="/articles/non-intervention-principle" ariaLabel="内政不干渉の原則" variant="success">
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <Badge variant="success">頻出トピック</Badge>
+              <time class="text-xs text-mun-text-muted whitespace-nowrap" datetime="2024-07-24">2024.07.24</time>
+            </div>
+            <h3 class="font-semibold text-lg mb-3 min-h-[3.5rem] font-noto text-mun-text group-hover:text-emerald-300 transition-colors">
+              徹底解説：内政（不）干渉の原則
+            </h3>
+            <p class="text-mun-text-muted text-sm mb-6 leading-relaxed line-clamp-4">
+              WW2以前から現代のR2P、国際刑事法に至る歴史的変遷を概観。会議で直面するケーススタディを豊富に盛り込みます。
+            </p>
+            <span class="text-sm font-medium text-emerald-400 group-hover:text-emerald-300 border-b border-transparent group-hover:border-emerald-400/50 transition-colors">
+              続きを読む
+            </span>
+          </Card>
+
+          <Card href="#" ariaLabel="国連憲章から読み解く内政不干渉（準備中）" variant="warning">
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <Badge variant="warning">コア文書</Badge>
+              <span class="text-xs text-mun-text-muted">準備中</span>
+            </div>
+            <h3 class="font-semibold text-lg mb-3 min-h-[3.5rem] font-noto text-mun-text group-hover:text-amber-300 transition-colors">
+              国連憲章から読み解く「内政不干渉」
+            </h3>
+            <p class="text-mun-text-muted text-sm mb-6 leading-relaxed line-clamp-4">
+              なぜ2条7項が置かれたのか。安保理の権限（第7章）との関係性を明確にし、歴史的・構造的理解を深めます。
+            </p>
+            <span class="text-sm font-medium text-amber-400/80">公開までお待ちください</span>
+          </Card>
+        </Grid>
+      </div>
+    </section>
+
+    <!-- サイトについて -->
+    <section id="about" class="border-t border-mun-border py-16 md:py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl">
+          <h2 class="section-heading text-2xl md:text-3xl">MUNOLOGYについて</h2>
+          <div class="section-lead mt-6 space-y-6 text-mun-text-secondary">
+            <p>
+              私たちは、模擬国連という熱狂の先に、日本の高校生の知の土台を広げ、未来の国際社会を担う人材の育成に寄与したいと考えています。
+            </p>
+            <p class="text-mun-text-muted text-base">
+              情報へのアクセスの偏りを少しでも減らすという問題意識のもと、探究のための読み物を丁寧に積み上げていきます。
+            </p>
+          </div>
+          <div class="mt-10">
+            <Button href="/about" variant="secondary" size="large" ariaLabel="詳しい説明へ">
               詳しく見る
             </Button>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-        <!-- おすすめ記事セクション -->
-      <section id="articles" class="py-16 md:py-24 relative">
-        <!-- 背景パターン -->
-        <div class="absolute inset-0 opacity-5">
-          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
+    <!-- カテゴリ（テキスト中心・大きなアイコン円なし） -->
+    <section id="categories" class="border-t border-mun-border py-16 md:py-20">
+      <div class="container mx-auto px-6">
+        <div class="mb-12 max-w-3xl">
+          <h2 class="section-heading text-2xl md:text-3xl">記事の分かれ方</h2>
+          <p class="section-lead">一覧ページでは、次のような観点で記事をまとめています。</p>
         </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 font-noto">
-              <span class="text-gray-500 mr-4">§</span>
-              <span class="hero-gradient-text">Featured Articles</span>
-              <span class="text-gray-500 ml-4">§</span>
-            </h2>
-            <p class="text-gray-400 text-lg font-noto">模擬国連に関連した最新の記事をご紹介</p>
-          </div>
-          
-          <Grid cols={3} gap="large">
-            <!-- 記事カード 1 -->
-            <Card href="/articles/icj-climate-change" ariaLabel="気候変動に関するICJ勧告的意見の記事" variant="info">
-              <div class="flex items-center justify-between mb-4">
-                <Badge variant="info">最新動向</Badge>
-                <span class="text-xs text-gray-500">2024.07.25</span>
-              </div>
-              <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-blue-400 transition-colors">
-                速報解説：気候変動に関するICJ勧告的意見
-              </h3>
-              <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
-                UNFCCCやパリ協定の法的拘束力、Lex Specialisといった法理を解説し、国際法における気候変動問題の新たな展開を分析します。
-              </p>
-              <div class="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
-                続きを読む 
-                <Icon name="chevronRight" size="small" class="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </Card>
-            
-            <!-- 記事カード 2 -->
-            <Card href="/articles/non-intervention-principle" ariaLabel="内政不干渉の原則の記事" variant="success">
-              <div class="flex items-center justify-between mb-4">
-                <Badge variant="success">頻出トピック</Badge>
-                <span class="text-xs text-gray-500">2024.07.24</span>
-              </div>
-              <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-green-400 transition-colors">
-                徹底解説：内政（不）干渉の原則
-              </h3>
-              <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
-                WW2以前から現代のR2P、国際刑事法に至る歴史的変遷を概観。会議で直面するケーススタディを豊富に盛り込みます。
-              </p>
-              <div class="inline-flex items-center text-green-400 hover:text-green-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
-                続きを読む 
-                <Icon name="chevronRight" size="small" class="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </Card>
-            
-            <!-- 記事カード 3 -->
-            <Card href="#" ariaLabel="国連憲章から読み解く内政不干渉の記事（準備中）" variant="warning">
-              <div class="flex items-center justify-between mb-4">
-                <Badge variant="warning">コア文書</Badge>
-                <span class="text-xs text-gray-500">Coming Soon</span>
-              </div>
-              <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-yellow-400 transition-colors">
-                国連憲章から読み解く「内政不干渉」
-              </h3>
-              <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
-                なぜ2条7項が置かれたのか。安保理の権限（第7章）との関係性を明確にし、歴史的・構造的理解を深めます。
-              </p>
-              <div class="inline-flex items-center text-yellow-400 hover:text-yellow-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
-                準備中 
-                <Icon name="chevronRight" size="small" class="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </Card>
-          </Grid>
-        </div>
-      </section>
 
-      <!-- Aboutセクション -->
-      <section id="about" class="py-16 md:py-24 card-bg relative overflow-hidden">
-        <!-- 装飾的な背景要素 -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-10">
-          <div class="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
-          <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div class="container mx-auto px-6 text-center relative z-10">
-          <div class="max-w-4xl mx-auto">
-            <Stack gap="large" align="center">
-              <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center">
-                <Icon name="lightbulb" size="large" class="text-blue-400" />
-              </div>
-              <h2 class="text-3xl md:text-4xl font-bold font-noto">
-                <span class="hero-gradient-text">About MUNOLOGY</span>
-              </h2>
-              <p class="text-xl text-gray-300 leading-relaxed font-noto">
-                私たちは、模擬国連という熱狂の先に、日本の高校生の「知のOS」をアップデートし、
-                未来の国際社会を担うチェンジメーカーを育むエコシステムを創造することを目指しています。
-              <br><br>
-              <span class="text-lg text-gray-400">情報格差の是正というロールズ的な問題意識に基づき、全ての探究者に、
-                大学レベルの「本質的な知」へのアクセスを提供します。</span>
+        <Grid cols={3} gap="large">
+          <Card ariaLabel="コア文書">
+            <Stack gap="small" align="stretch">
+              <h3 class="font-semibold text-lg font-noto text-mun-text">コア文書</h3>
+              <p class="text-sm text-mun-text-muted leading-relaxed">
+                国連憲章や基本的な国際法文書に関する解説
               </p>
-              <Button href="/about" variant="primary" size="large" ariaLabel="詳細ページに移動">
-                <Icon name="eye" size="small" class="mr-2" />
-                さらに詳しく
-              </Button>
             </Stack>
-          </div>
-        </div>
-      </section>
+          </Card>
+          <Card ariaLabel="頻出トピック">
+            <Stack gap="small" align="stretch">
+              <h3 class="font-semibold text-lg font-noto text-mun-text">頻出トピック</h3>
+              <p class="text-sm text-mun-text-muted leading-relaxed">
+                会議で繰り返し扱われるテーマの整理
+              </p>
+            </Stack>
+          </Card>
+          <Card ariaLabel="最新動向">
+            <Stack gap="small" align="stretch">
+              <h3 class="font-semibold text-lg font-noto text-mun-text">最新動向</h3>
+              <p class="text-sm text-mun-text-muted leading-relaxed">
+                判例・外交・条約運用などの新しい動き
+              </p>
+            </Stack>
+          </Card>
+        </Grid>
 
-      <!-- カテゴリーセクション -->
-      <section id="categories" class="py-16 md:py-24 relative">
-        <!-- 背景パターン -->
-        <div class="absolute inset-0 opacity-5">
-          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 font-noto">
-              <span class="text-gray-500 mr-4">§</span>
-              <span class="hero-gradient-text">Categories</span>
-              <span class="text-gray-500 ml-4">§</span>
-            </h2>
-            <p class="text-gray-400 text-lg font-noto">学びの分野を選択してください</p>
-          </div>
-          
-          <Grid cols={3} gap="large">
-            <!-- カテゴリー1 -->
-            <Card ariaLabel="コア文書カテゴリー">
-              <div class="text-center">
-                <div class="w-16 h-16 bg-yellow-400 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon name="book" size="large" class="text-yellow-400" />
-                </div>
-                <h3 class="font-bold text-xl font-noto group-hover:text-yellow-400 transition-colors">コア文書</h3>
-                <p class="text-gray-400 text-sm mt-2">国連憲章や国際法の基本文書</p>
-              </div>
-            </Card>
-            
-            <!-- カテゴリー2 -->
-            <Card ariaLabel="頻出トピックカテゴリー">
-              <div class="text-center">
-                <div class="w-16 h-16 bg-green-400 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon name="users" size="large" class="text-green-400" />
-                </div>
-                <h3 class="font-bold text-xl font-noto group-hover:text-green-400 transition-colors">頻出トピック</h3>
-                <p class="text-gray-400 text-sm mt-2">会議でよく扱われるテーマ</p>
-              </div>
-            </Card>
-            
-            <!-- カテゴリー3 -->
-            <Card ariaLabel="最新動向カテゴリー">
-              <div class="text-center">
-                <div class="w-16 h-16 bg-blue-400 bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon name="lightning" size="large" class="text-blue-400" />
-                </div>
-                <h3 class="font-bold text-xl font-noto group-hover:text-blue-400 transition-colors">最新動向</h3>
-                <p class="text-gray-400 text-sm mt-2">国際社会の最新の動き</p>
-              </div>
-            </Card>
-          </Grid>
-        </div>
-      </section>
-    </main>
+        <p class="mt-12 text-center">
+          <a href="/articles" class="text-sm font-medium text-mun-link hover:text-mun-accent border-b border-mun-link/30 hover:border-mun-accent transition-colors">
+            すべての記事を見る
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .animate-fade-in {
-    animation: fade-in 0.8s ease-out;
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 </style>

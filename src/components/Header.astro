@@ -1,77 +1,97 @@
-<header class="py-4 px-6 md:px-12 flex justify-between items-center bg-[#121212] bg-opacity-80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200 border-opacity-10">
-    <a href="/" class="flex items-center space-x-3">
-        <picture>
-          <source media="(max-width: 768px)" srcset="/images/typo_dark_rev2.png" />
-          <img src="/images/typo_dark_rev2.svg" alt="MUNOLOGY" class="h-8 w-auto" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" />
-        </picture>
-        <span class="text-xs text-gray-400 hidden md:block">~Beyond the Conference~</span>
-    </a>
-    
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center space-x-6 font-bold text-sm">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
-        <a href="/about" class="hover:text-white transition-colors">About</a>
-        <a href="/articles" class="hover:text-white transition-colors">Articles</a>
-        <a href="/author" class="hover:text-white transition-colors">Author</a>
-        <a href="/contact" class="hover:text-white transition-colors">Contact</a>
-    </nav>
-    
-    <!-- Mobile Menu Button -->
-    <button id="mobile-menu-button" class="md:hidden text-white hover:text-gray-300 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-    </button>
+<header
+  class="py-4 px-6 md:px-12 flex justify-between items-center bg-mun-elevated/85 backdrop-blur-md sticky top-0 z-50 border-b border-mun-border"
+>
+  <a href="/" class="flex items-center space-x-3 text-mun-text-secondary hover:text-mun-text transition-colors">
+    <picture>
+      <source media="(max-width: 768px)" srcset="/images/typo_dark_rev2.png" />
+      <img
+        src="/images/typo_dark_rev2.svg"
+        alt="MUNOLOGY"
+        class="h-8 w-auto"
+        style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
+      />
+    </picture>
+    <span class="text-xs text-mun-text-muted hidden md:block">Beyond the Conference</span>
+  </a>
+
+  <!-- Desktop Navigation -->
+  <nav class="hidden md:flex items-center space-x-6 font-bold text-sm text-mun-text-secondary">
+    <a href="/" class="hover:text-mun-text transition-colors">Home</a>
+    <a href="/about" class="hover:text-mun-text transition-colors">About</a>
+    <a href="/articles" class="hover:text-mun-text transition-colors">Articles</a>
+    <a href="/author" class="hover:text-mun-text transition-colors">Author</a>
+    <a href="/contact" class="hover:text-mun-text transition-colors">Contact</a>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button
+    type="button"
+    id="mobile-menu-button"
+    class="md:hidden text-mun-text hover:text-mun-accent transition-colors"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    aria-label="メニューを開く"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+  </button>
 </header>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-50 md:hidden hidden">
-    <div class="flex justify-end h-full">
-        <div class="w-64 bg-[#121212] h-full shadow-lg">
-            <div class="flex justify-between items-center p-6 border-b border-gray-700">
-                <span class="text-white font-bold">Menu</span>
-                <button id="mobile-menu-close" class="text-white hover:text-gray-300 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <nav class="p-6">
-                <div class="space-y-4">
-                    <a href="/" class="block text-white hover:text-blue-400 transition-colors font-bold">Home</a>
-                    <a href="/about" class="block text-white hover:text-blue-400 transition-colors font-bold">About</a>
-                    <a href="/articles" class="block text-white hover:text-blue-400 transition-colors font-bold">Articles</a>
-                    <a href="/author" class="block text-white hover:text-blue-400 transition-colors font-bold">Author</a>
-                    <a href="/contact" class="block text-white hover:text-blue-400 transition-colors font-bold">Contact</a>
-                </div>
-            </nav>
+<div id="mobile-menu" class="fixed inset-0 bg-mun-bg/70 backdrop-blur-sm z-[60] md:hidden hidden" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
+  <div class="flex justify-end h-full">
+    <div class="w-64 bg-mun-elevated h-full shadow-xl border-l border-mun-border">
+      <div class="flex justify-between items-center p-6 border-b border-mun-border">
+        <span class="text-mun-text font-bold">Menu</span>
+        <button
+          type="button"
+          id="mobile-menu-close"
+          class="text-mun-text hover:text-mun-accent transition-colors"
+          aria-label="メニューを閉じる"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="p-6" aria-label="モバイルナビゲーション">
+        <div class="space-y-4">
+          <a href="/" class="block text-mun-text hover:text-mun-accent transition-colors font-bold">Home</a>
+          <a href="/about" class="block text-mun-text hover:text-mun-accent transition-colors font-bold">About</a>
+          <a href="/articles" class="block text-mun-text hover:text-mun-accent transition-colors font-bold">Articles</a>
+          <a href="/author" class="block text-mun-text hover:text-mun-accent transition-colors font-bold">Author</a>
+          <a href="/contact" class="block text-mun-text hover:text-mun-accent transition-colors font-bold">Contact</a>
         </div>
+      </nav>
     </div>
+  </div>
 </div>
 
 <script>
-    // Mobile menu functionality
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenuClose && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = '';
-        });
-        
-        // Close menu when clicking outside
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        });
-    }
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenuClose && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 </script>

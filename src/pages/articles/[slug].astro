@@ -22,46 +22,35 @@ const shareTitle = article.data.title;
 ---
 
 <BaseLayout pageTitle={article.data.title}>
-    <main class="pt-16">
-    <!-- 記事ヘッダー -->
-    <section class="relative py-16 md:py-24 px-6 overflow-hidden">
-      <!-- 背景のグラデーション -->
-      <div class="absolute inset-0 z-0 opacity-10" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);"></div>
-
-      <div class="relative z-10 container mx-auto">
-        <div class="max-w-4xl mx-auto">
-          <!-- メタ情報 -->
-          <div class="flex items-center justify-between mb-8">
-            <span class="text-sm text-blue-400 font-semibold tracking-wide uppercase">{article.data.category}</span>
-            <span class="text-sm text-gray-400 font-medium">{new Date(article.data.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-          </div>
-
-          <!-- タイトル -->
-          <h1 class="text-3xl md:text-5xl font-black mb-8 hero-gradient-text tracking-tight font-noto leading-tight">
-            {article.data.title}
-          </h1>
-
-          <!-- 説明 -->
-          <p class="text-lg md:text-xl text-gray-200 mb-10 font-noto leading-relaxed max-w-3xl">
-            {article.data.description}
+    <div class="page-main pt-16">
+    <header class="page-hero">
+      <div class="container mx-auto px-6 py-12 md:py-16 max-w-3xl">
+        <div class="text-sm text-mun-text-muted font-noto mb-4 space-y-1">
+          <p class="text-mun-text-secondary">{article.data.category}</p>
+          <p>
+            <time datetime={article.data.date.toISOString()}>
+              {new Date(article.data.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
           </p>
-
-          <!-- タグ -->
-          <div class="flex flex-wrap gap-3 mb-10">
-            {article.data.tags.map((tag: string) => (
-              <span class="text-sm bg-gray-800/50 px-4 py-2 rounded-full text-gray-300 border border-gray-700/50 backdrop-blur-sm">
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <!-- 著者情報 -->
-          <div class="flex items-center text-sm text-gray-400 border-t border-gray-700/50 pt-6">
-            <span class="font-medium">著者: {article.data.author}</span>
-          </div>
         </div>
+        <h1 class="page-display-title text-3xl md:text-4xl lg:text-5xl">
+          {article.data.title}
+        </h1>
+        <p class="page-lead mt-6">
+          {article.data.description}
+        </p>
+        {article.data.tags.length > 0 && (
+          <p class="mt-8 text-sm text-mun-text-muted font-noto leading-relaxed">
+            <span class="text-mun-text-secondary">タグ</span>
+            {' '}
+            {article.data.tags.join('、')}
+          </p>
+        )}
+        <p class="mt-6 text-sm text-mun-text-muted font-noto border-t border-mun-border pt-6">
+          著者 {article.data.author}
+        </p>
       </div>
-    </section>
+    </header>
 
     <!-- 記事本文 -->
     <section class="py-12 md:py-20">
@@ -74,61 +63,40 @@ const shareTitle = article.data.title;
       </div>
     </section>
 
-    <!-- シェアセクション -->
-    <section class="py-12">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-8 bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700/50">
-            <div class="text-center sm:text-left">
-              <h3 class="text-xl font-bold text-gray-100 mb-3">この記事をシェア</h3>
-              <p class="text-gray-400 leading-relaxed">役立つ情報を他の方にも共有しましょう</p>
-            </div>
-            <div class="flex gap-4">
-              <!-- URLコピーボタン -->
-              <button 
-                id="copyUrlBtn"
-                class="flex items-center gap-3 px-6 py-3 bg-gray-700/50 hover:bg-gray-600/50 text-gray-200 rounded-xl transition-all duration-300 hover:scale-105 border border-gray-600/50 backdrop-blur-sm"
-                title="URLをコピー"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                </svg>
-                <span class="font-medium">コピー</span>
-              </button>
-              
-              <!-- X（Twitter）シェアボタン -->
-              <a 
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-3 px-6 py-3 bg-blue-600/80 hover:bg-blue-500/80 text-white rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                title="Xでシェア"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-                <span class="font-medium">シェア</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ナビゲーション -->
-    <section class="py-16">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-          <a href="/articles" class="inline-flex items-center gap-3 bg-gray-800/50 hover:bg-gray-700/50 text-gray-200 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 border border-gray-700/50 backdrop-blur-sm">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            記事一覧に戻る
+    <section class="py-12 border-t border-mun-border">
+      <div class="container mx-auto px-6 max-w-3xl">
+        <p class="text-sm font-medium text-mun-text-secondary font-noto mb-4">共有</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-noto">
+          <button
+            type="button"
+            id="copyUrlBtn"
+            class="text-mun-link hover:text-mun-accent border-b border-transparent hover:border-mun-accent transition-colors"
+          >
+            リンクをコピー
+          </button>
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-mun-link hover:text-mun-accent border-b border-transparent hover:border-mun-accent transition-colors"
+          >
+            Xで投稿
           </a>
         </div>
       </div>
     </section>
-  </main>
+
+    <section class="py-12">
+      <div class="container mx-auto px-6 max-w-3xl">
+        <a
+          href="/articles"
+          class="text-sm font-medium text-mun-text-secondary hover:text-mun-accent border-b border-mun-border hover:border-mun-accent transition-colors font-noto"
+        >
+          記事一覧へ戻る
+        </a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 
 <script>
@@ -138,20 +106,10 @@ const shareTitle = article.data.title;
       await navigator.clipboard.writeText(window.location.href);
       const btn = document.getElementById('copyUrlBtn');
       if (btn) {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = `
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="text-sm">コピー完了</span>
-        `;
-        btn.classList.add('bg-green-600', 'hover:bg-green-500');
-        btn.classList.remove('bg-gray-700', 'hover:bg-gray-600');
-        
+        const originalText = btn.textContent ?? '';
+        btn.textContent = 'コピーしました';
         setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.classList.remove('bg-green-600', 'hover:bg-green-500');
-          btn.classList.add('bg-gray-700', 'hover:bg-gray-600');
+          btn.textContent = originalText;
         }, 2000);
       }
     } catch (err) {

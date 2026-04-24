@@ -9,25 +9,28 @@ export interface Props {
 const { title, description, breadcrumbs, actions } = Astro.props;
 ---
 
-<header class="page-header bg-gray-900 border-b border-gray-800">
+<header class="page-header bg-mun-surface/90 border-b border-mun-border">
   <div class="container mx-auto px-6 py-8">
-    <!-- パンくずリスト -->
     {breadcrumbs && breadcrumbs.length > 0 && (
       <nav class="mb-4" aria-label="パンくずリスト">
-        <ol class="flex items-center space-x-2 text-sm text-gray-400">
+        <ol class="flex items-center space-x-2 text-sm text-mun-text-muted">
           {breadcrumbs.map((item, index) => (
             <li class="flex items-center">
               {index > 0 && (
-                <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                <svg class="w-4 h-4 mx-2 text-mun-text-muted" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
               )}
               {item.href ? (
-                <a href={item.href} class="hover:text-blue-400 transition-colors">
+                <a href={item.href} class="hover:text-mun-accent transition-colors">
                   {item.label}
                 </a>
               ) : (
-                <span class="text-gray-300">{item.label}</span>
+                <span class="text-mun-text-secondary">{item.label}</span>
               )}
             </li>
           ))}
@@ -35,19 +38,14 @@ const { title, description, breadcrumbs, actions } = Astro.props;
       </nav>
     )}
 
-    <!-- タイトルとアクション -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
       <div class="mb-4 md:mb-0">
-        <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 font-noto">
+        <h1 class="text-3xl md:text-4xl font-bold text-mun-text mb-2 font-noto">
           {title}
         </h1>
-        {description && (
-          <p class="text-gray-300 text-lg font-noto">
-            {description}
-          </p>
-        )}
+        {description && <p class="text-mun-text-secondary text-lg font-noto">{description}</p>}
       </div>
-      
+
       {actions && (
         <div class="flex flex-wrap gap-3">
           <slot name="actions" />
@@ -55,4 +53,4 @@ const { title, description, breadcrumbs, actions } = Astro.props;
       )}
     </div>
   </div>
-</header> 
+</header>

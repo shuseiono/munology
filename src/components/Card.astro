@@ -9,20 +9,21 @@ export interface Props {
 
 const { href, class: className = '', ariaLabel, ariaDescribedBy, variant = 'default' } = Astro.props;
 
-const baseClasses = "card-bg rounded-xl overflow-hidden transform transition-all duration-500 shadow-lg border border-gray-700";
-const variantHover = {
-  info: 'hover:border-blue-500',
-  success: 'hover:border-green-500',
-  warning: 'hover:border-yellow-500',
-  default: 'hover:border-gray-500',
+const baseClasses =
+  'card-bg rounded-lg overflow-hidden transition-colors duration-200 shadow-sm border border-mun-border';
+const variantHover: Record<string, string> = {
+  info: 'hover:border-sky-400/50',
+  success: 'hover:border-emerald-400/50',
+  warning: 'hover:border-amber-400/50',
+  default: 'hover:border-mun-border',
 };
 const classes = `${baseClasses} ${variantHover[variant]} ${className}`;
 ---
 
 {href ? (
-  <a 
-    href={href} 
-    class={`${classes} block hover:-translate-y-1`}
+  <a
+    href={href}
+    class={`${classes} block hover:border-mun-text-muted/25`}
     aria-label={ariaLabel}
     aria-describedby={ariaDescribedBy}
   >
@@ -31,14 +32,9 @@ const classes = `${baseClasses} ${variantHover[variant]} ${className}`;
     </div>
   </a>
 ) : (
-  <div 
-    class={classes}
-    role="article"
-    aria-label={ariaLabel}
-    aria-describedby={ariaDescribedBy}
-  >
+  <div class={classes} role="article" aria-label={ariaLabel} aria-describedby={ariaDescribedBy}>
     <div class="p-6">
       <slot />
     </div>
   </div>
-)} 
+)}

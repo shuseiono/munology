@@ -8,8 +8,6 @@
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "astro": "astro",
-    "lint": "eslint . --ext .js,.ts,.astro",
-    "format": "prettier --write .",
     "type-check": "astro check",
     "clean": "rm -rf dist .astro",
     "deploy": "npm run build && npm run preview",

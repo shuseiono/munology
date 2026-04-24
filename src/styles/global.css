@@ -2,32 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-/* シンプル・スタイリッシュ・洗練されたMarkdownコンテンツスタイル */
+/* Design.md と同期（AGENTS.md 参照） */
+:root {
+  --mun-bg: #0b0f14;
+  --mun-bg-subtle: #101820;
+  --mun-surface: #131b26;
+  --mun-elevated: #1a2435;
+  --mun-border: rgba(148, 163, 184, 0.14);
+  --mun-text: #e6e8eb;
+  --mun-text-secondary: #a8b0bd;
+  --mun-text-muted: #7a8494;
+  --mun-accent: #6b9eff;
+  --mun-accent-strong: #8f7df0;
+  --mun-link: #8cc4ff;
+  --mun-focus: #6b9eff;
+}
+
+@layer base {
+  html {
+    @apply font-sans antialiased;
+    background-color: var(--mun-bg);
+  }
+
+  body {
+    background-color: var(--mun-bg);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--mun-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* スキップリンク（BaseLayout）— sr-only / フォーカス時に可視 */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  color: var(--mun-bg);
+  background-color: var(--mun-accent);
+}
+
 @layer components {
   .markdown-content {
-    @apply text-gray-200 leading-relaxed font-noto;
+    color: var(--mun-text-secondary);
+    @apply leading-relaxed font-noto;
     font-size: 1.125rem;
     line-height: 1.8;
     letter-spacing: 0.025em;
   }
 
-  /* 見出し - 洗練されたカラーリングと階層構造 */
   .markdown-content h1 {
     @apply text-3xl md:text-4xl font-black mb-8 mt-12 text-center;
     line-height: 1.3;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+    background: linear-gradient(135deg, var(--mun-text) 0%, var(--mun-text-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .markdown-content h2 {
     @apply text-2xl md:text-3xl font-bold mb-6 mt-10;
     line-height: 1.4;
     letter-spacing: -0.01em;
-    color: #f3f4f6;
+    color: var(--mun-text);
     position: relative;
     padding-bottom: 0.75rem;
   }
@@ -39,57 +99,61 @@
     left: 0;
     width: 3rem;
     height: 3px;
-    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(90deg, var(--mun-accent) 0%, var(--mun-accent-strong) 100%);
     border-radius: 2px;
   }
 
   .markdown-content h3 {
     @apply text-xl md:text-2xl font-bold mb-4 mt-8;
     line-height: 1.5;
-    color: #e5e7eb;
-    border-left: 4px solid #3b82f6;
+    color: var(--mun-text);
+    border-left: 4px solid var(--mun-accent);
     padding-left: 1rem;
   }
 
   .markdown-content h4 {
     @apply text-lg md:text-xl font-semibold mb-3 mt-6;
     line-height: 1.5;
-    color: #d1d5db;
+    color: var(--mun-text-secondary);
     position: relative;
     padding-left: 0.5rem;
   }
 
   .markdown-content h4::before {
-    content: "◆";
-    color: #8b5cf6;
-    font-size: 0.8em;
+    content: "";
+    display: inline-block;
+    width: 0.35rem;
+    height: 0.35rem;
     margin-right: 0.5rem;
+    border-radius: 9999px;
+    background: var(--mun-accent-strong);
+    vertical-align: middle;
   }
 
   .markdown-content h5 {
     @apply text-base md:text-lg font-semibold mb-2 mt-4;
-    color: #9ca3af;
-    border-bottom: 1px solid #374151;
+    color: var(--mun-text-muted);
+    border-bottom: 1px solid var(--mun-border);
     padding-bottom: 0.25rem;
   }
 
   .markdown-content h6 {
     @apply text-sm md:text-base font-semibold mb-2 mt-4;
-    color: #6b7280;
+    color: var(--mun-text-muted);
     font-style: italic;
   }
 
-  /* 段落 - 読みやすい行間と文字間隔 */
   .markdown-content p {
-    @apply mb-6 text-gray-200 leading-relaxed;
+    @apply mb-6 leading-relaxed;
+    color: var(--mun-text-secondary);
     line-height: 1.8;
     text-align: justify;
     hyphens: auto;
   }
 
-  /* リスト - シンプルで統一感のあるデザイン */
   .markdown-content ul {
-    @apply mb-6 pl-8 text-gray-200;
+    @apply mb-6 pl-8;
+    color: var(--mun-text-secondary);
     list-style-type: none;
   }
 
@@ -99,15 +163,18 @@
   }
 
   .markdown-content ul li::before {
-    content: "◆";
-    @apply font-bold absolute;
-    left: -1.5rem;
-    color: #8b5cf6;
-    font-size: 0.8em;
+    content: "";
+    @apply font-bold absolute rounded-full;
+    left: -1.25rem;
+    top: 0.55em;
+    width: 0.35rem;
+    height: 0.35rem;
+    background: var(--mun-accent-strong);
   }
 
   .markdown-content ol {
-    @apply mb-6 pl-8 text-gray-200;
+    @apply mb-6 pl-8;
+    color: var(--mun-text-secondary);
     counter-reset: list-counter;
   }
 
@@ -121,10 +188,9 @@
     content: counter(list-counter) ".";
     @apply font-bold absolute;
     left: -2rem;
-    color: #3b82f6;
+    color: var(--mun-accent);
   }
 
-  /* ネストしたリスト */
   .markdown-content ul ul,
   .markdown-content ol ol,
   .markdown-content ul ol,
@@ -132,48 +198,33 @@
     @apply mt-2 mb-2;
   }
 
-  /* 引用 - 洗練されたデザイン */
   .markdown-content blockquote {
     @apply pl-6 py-4 my-8 italic;
-    border-left: 4px solid;
-    border-image: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%) 1;
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
-    border-radius: 0 0.5rem 0.5rem 0;
-    position: relative;
-  }
-
-  .markdown-content blockquote::before {
-    content: "\201C";
-    position: absolute;
-    top: -0.5rem;
-    left: 1rem;
-    font-size: 3rem;
-    color: #8b5cf6;
-    opacity: 0.3;
-    font-family: serif;
+    border-left: 3px solid var(--mun-border);
+    background: rgba(26, 36, 53, 0.35);
+    border-radius: 0 0.375rem 0.375rem 0;
   }
 
   .markdown-content blockquote p {
     @apply mb-0;
-    color: #9ca3af;
+    color: var(--mun-text-muted);
     font-style: italic;
     line-height: 1.7;
   }
 
-  /* コード - モダンで読みやすい */
   .markdown-content code {
     @apply px-2 py-1 rounded text-sm font-mono;
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    color: #60a5fa;
-    border: 1px solid #374151;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--mun-surface) 0%, var(--mun-bg-subtle) 100%);
+    color: var(--mun-link);
+    border: 1px solid var(--mun-border);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
   }
 
   .markdown-content pre {
     @apply p-6 rounded-lg overflow-x-auto mb-6;
-    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-    border: 1px solid #374151;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--mun-bg-subtle) 0%, var(--mun-surface) 100%);
+    border: 1px solid var(--mun-border);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 6px rgba(0, 0, 0, 0.12);
     position: relative;
   }
 
@@ -184,91 +235,95 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+    background: linear-gradient(90deg, var(--mun-accent) 0%, var(--mun-accent-strong) 100%);
     border-radius: 0.5rem 0.5rem 0 0;
   }
 
   .markdown-content pre code {
-    @apply bg-transparent p-0 text-gray-200 border-0;
+    @apply bg-transparent p-0 border-0;
+    color: var(--mun-text-secondary);
   }
 
-  /* リンク - シンプルで洗練された */
   .markdown-content a {
-    @apply text-blue-400 transition-all duration-200;
+    color: var(--mun-link);
+    @apply transition-all duration-200;
     text-decoration: none;
     border-bottom: 1px solid transparent;
   }
 
   .markdown-content a:hover {
-    @apply text-blue-300;
-    border-bottom-color: #60a5fa;
+    color: var(--mun-accent);
+    border-bottom-color: var(--mun-accent);
   }
 
-  /* 強調 - 読みやすいコントラスト */
   .markdown-content strong {
-    @apply font-bold text-white;
+    @apply font-bold;
+    color: var(--mun-text);
   }
 
   .markdown-content em {
-    @apply italic text-gray-200;
+    @apply italic;
+    color: var(--mun-text-secondary);
   }
 
-  /* テーブル - モダンで洗練された */
   .markdown-content table {
     @apply w-full border-collapse mb-8 rounded-lg overflow-hidden;
-    background: rgba(31, 41, 55, 0.8);
-    border: 1px solid #374151;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(19, 27, 38, 0.85);
+    border: 1px solid var(--mun-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
   }
 
   .markdown-content th {
-    @apply bg-gray-800 px-6 py-4 text-left font-bold text-white;
-    border-bottom: 2px solid #374151;
+    @apply px-6 py-4 text-left font-bold;
+    color: var(--mun-text);
+    background: var(--mun-elevated);
+    border-bottom: 2px solid var(--mun-border);
   }
 
   .markdown-content td {
-    @apply border-b border-gray-700 px-6 py-4 text-gray-200;
+    @apply px-6 py-4;
+    color: var(--mun-text-secondary);
+    border-bottom: 1px solid var(--mun-border);
   }
 
   .markdown-content tr:hover {
-    background: rgba(59, 130, 246, 0.05);
+    background: rgba(107, 158, 255, 0.04);
   }
 
-  /* 画像 - シンプルで美しい */
   .markdown-content img {
     @apply max-w-full h-auto rounded-lg my-8 mx-auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    border: 1px solid #374151;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--mun-border);
   }
 
-  /* 水平線 - 洗練された */
   .markdown-content hr {
-    @apply border-gray-700 my-12;
+    @apply my-12;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #374151 50%, transparent 100%);
+    border: 0;
+    background: linear-gradient(90deg, transparent 0%, var(--mun-border) 50%, transparent 100%);
   }
 
-  /* チェックリスト */
   .markdown-content input[type="checkbox"] {
     @apply mr-3;
   }
 
-  /* 定義リスト */
   .markdown-content dl {
     @apply mb-6;
   }
 
   .markdown-content dt {
-    @apply font-bold text-white mb-2;
+    @apply font-bold mb-2;
+    color: var(--mun-text);
   }
 
   .markdown-content dd {
-    @apply text-gray-200 mb-4 ml-4;
+    @apply mb-4 ml-4;
+    color: var(--mun-text-secondary);
   }
 
-  /* 脚注 */
   .markdown-content .footnotes {
-    @apply mt-12 pt-8 border-t border-gray-700;
+    @apply mt-12 pt-8;
+    border-top: 1px solid var(--mun-border);
   }
 
   .markdown-content .footnotes ol {
@@ -276,24 +331,25 @@
   }
 
   .markdown-content .footnotes li {
-    @apply mb-2 text-sm text-gray-400;
+    @apply mb-2 text-sm;
+    color: var(--mun-text-muted);
   }
 
-  /* 折りたたみセクション */
   .markdown-content details {
     @apply mb-6;
   }
 
   .markdown-content summary {
-    @apply cursor-pointer font-semibold text-gray-200 mb-4;
+    @apply cursor-pointer font-semibold mb-4;
+    color: var(--mun-text-secondary);
     padding: 1rem;
-    background: rgba(55, 65, 81, 0.5);
+    background: rgba(26, 36, 53, 0.45);
     border-radius: 0.5rem;
-    border: 1px solid #374151;
+    border: 1px solid var(--mun-border);
   }
 
   .markdown-content summary:hover {
-    background: rgba(55, 65, 81, 0.7);
+    background: rgba(26, 36, 53, 0.65);
   }
 
   .markdown-content details > div {
@@ -301,32 +357,55 @@
   }
 }
 
-/* カスタムユーティリティクラス */
 @layer utilities {
   .hero-gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--mun-accent) 0%, var(--mun-accent-strong) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .card-bg {
-    background: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(26, 36, 53, 0.72);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--mun-border);
   }
 
   .category-icon-bg {
-    background: rgba(26, 26, 26, 0.6);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(19, 27, 38, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--mun-border);
   }
 
   .font-noto {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans JP', 'Inter', sans-serif;
   }
 
-  /* レスポンシブ対応 */
+  /* ページ先頭の落ち着いた見出し帯（装飾記号・グラデ見出しを避ける） */
+  .page-hero {
+    @apply border-b border-mun-border bg-mun-bg-subtle/35;
+  }
+
+  .page-hero-inner {
+    @apply container mx-auto px-6 py-12 md:py-16 max-w-3xl;
+  }
+
+  .page-display-title {
+    @apply text-3xl md:text-4xl font-semibold text-mun-text font-noto tracking-tight leading-tight;
+  }
+
+  .page-lead {
+    @apply mt-5 text-mun-text-secondary text-base md:text-lg leading-relaxed font-noto max-w-2xl;
+  }
+
+  .section-heading {
+    @apply text-xl md:text-2xl font-semibold text-mun-text font-noto tracking-tight;
+  }
+
+  .section-lead {
+    @apply mt-3 text-mun-text-secondary text-base leading-relaxed font-noto max-w-2xl;
+  }
+
   @media (max-width: 768px) {
     .markdown-content {
       font-size: 1rem;

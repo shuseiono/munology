@@ -2,7 +2,13 @@
 
 模擬国連参加者のための国際法・国際関係情報サイトです。
 
-## 🚀 プロジェクト構造
+## ドキュメント（設計・運用）
+
+- [Design.md](./Design.md) — デザイントークン、タイポ、コンポーネント、記事 Markdown ルール
+- [AGENTS.md](./AGENTS.md) — リポジトリ作業規約（人間・AI 共通）
+- [docs/PREMISES.md](./docs/PREMISES.md) — ブランド・計測・ホスティング等の前提チェックリスト
+
+## プロジェクト構造
 
 ```
 /
@@ -14,14 +20,17 @@
 │   ├── content/          # 記事コンテンツ
 │   ├── layouts/          # レイアウト
 │   ├── pages/            # ページ
-│   └── styles/           # スタイル
+│   └── styles/           # スタイル（global.css に :root トークン）
 ├── docs/                 # ドキュメント
-│   ├── GIT_GUIDE.md     # Git管理ガイド
-│   └── GIT_QUICK_REFERENCE.md # クイックリファレンス
+│   ├── PREMISES.md        # 前提・合意事項
+│   ├── GIT_GUIDE.md
+│   └── GIT_QUICK_REFERENCE.md
+├── Design.md
+├── AGENTS.md
 └── package.json
 ```
 
-## 🧞 コマンド
+## コマンド
 
 | コマンド | アクション |
 | :------- | :--------- |
@@ -29,40 +38,26 @@
 | `npm run dev` | ローカル開発サーバーを起動 |
 | `npm run build` | 本番用ビルド |
 | `npm run preview` | ビルドのプレビュー |
-| `npm run lint` | コード品質チェック |
-| `npm run format` | コードフォーマット |
-| `npm run type-check` | 型チェック |
+| `npm run type-check` | `astro check` による型・テンプレートチェック |
 | `npm run clean` | ビルドファイルをクリア |
 
-## 📚 ドキュメント
+## Git・コーディング
 
-- [Git管理ガイド](./docs/GIT_GUIDE.md) - Git初心者向けの包括的なガイド
-- [Gitクイックリファレンス](./docs/GIT_QUICK_REFERENCE.md) - 日常的なGit操作の早見表
+- **Git**: Git Flow 想定、Conventional Commits、PR レビュー（詳細は [docs/GIT_GUIDE.md](./docs/GIT_GUIDE.md)）
+- **スタイルの正**: [Design.md](./Design.md) と `src/styles/global.css` の `:root`、および `tailwind.config.mjs` の `mun.*` を同期すること（[AGENTS.md](./AGENTS.md)）
 
-## 🎯 開発ガイドライン
+## 技術スタック
 
-### Git管理
-- ブランチ戦略: Git Flow
-- コミットメッセージ: Conventional Commits
-- レビュー: プルリクエスト必須
-
-### コーディング規約
-- TypeScript使用
-- ESLint + Prettier
-- コンポーネント指向設計
-
-## 🌐 技術スタック
-
-- **フレームワーク**: Astro
+- **フレームワーク**: Astro 5
 - **スタイリング**: Tailwind CSS
-- **言語**: TypeScript
-- **コンテンツ管理**: Markdown + Content Collections
+- **コンテンツ**: Markdown + Astro Content Collections（スキーマは `src/content/config.ts`）
 
-## 📝 記事投稿
+## 記事投稿
 
-記事は `src/content/articles/` ディレクトリにMarkdownファイルとして配置します。
+記事は `src/content/articles/` に Markdown で配置します。
 
 ### 記事のフロントマター例
+
 ```yaml
 ---
 title: "記事タイトル"
@@ -73,10 +68,11 @@ category: "カテゴリ"
 tags: ["タグ1", "タグ2"]
 image: ""
 draft: false
+id: "unique-id"
 ---
 ```
 
-## 🤝 貢献方法
+## 貢献方法
 
 1. このリポジトリをフォーク
 2. 機能ブランチを作成 (`git checkout -b feature/新機能`)
@@ -84,7 +80,7 @@ draft: false
 4. ブランチにプッシュ (`git push origin feature/新機能`)
 5. プルリクエストを作成
 
-## 📞 お問い合わせ
+## お問い合わせ
 
 質問や提案があれば、お気軽にお声がけください。
 

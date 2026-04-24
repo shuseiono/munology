@@ -1,55 +1,29 @@
 ---
-// src/pages/author.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Author | 執筆者";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <main class="pt-16">
-      <!-- ヒーローセクション -->
-      <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden">
-        <!-- 背景のグラデーション -->
-        <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
+  <div class="page-main pt-16">
+    <header class="page-hero">
+      <div class="page-hero-inner">
+        <h1 class="page-display-title">執筆者</h1>
+        <p class="page-lead">MUNOLOGYの記事を書いている人たちについて、順次掲載していく予定です。</p>
+      </div>
+    </header>
 
-        <div class="relative z-10 container mx-auto">
-          <div class="flex justify-center mb-8">
-            <div class="w-20 h-20 bg-green-500 bg-opacity-10 rounded-full flex items-center justify-center">
-              <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-              </svg>
-            </div>
-          </div>
-          <h1 class="text-4xl md:text-6xl font-black mb-8 hero-gradient-text tracking-tight font-noto">Author</h1>
-          <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 font-noto leading-relaxed">
-            MUNOLOGYの執筆者について
+    <section class="py-14 md:py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto border border-mun-border rounded-lg p-8 md:p-10 bg-mun-surface/30">
+          <p class="text-mun-text-secondary font-noto leading-relaxed mb-4">
+            執筆者プロフィールは準備中です。
+          </p>
+          <p class="text-mun-text-muted text-sm font-noto leading-relaxed">
+            公開までしばらくお待ちください。
           </p>
         </div>
-      </section>
-
-      <!-- 執筆者情報セクション -->
-      <section class="py-16 md:py-24">
-        <div class="container mx-auto px-6">
-          <div class="max-w-4xl mx-auto">
-            <div class="card-bg rounded-xl p-8 md:p-12">
-              <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center font-noto">
-                <span class="hero-gradient-text">執筆者プロフィール</span>
-              </h2>
-              
-              <div class="space-y-8">
-                <div class="text-center">
-                  <p class="text-lg md:text-xl text-gray-300 mb-6 font-noto leading-relaxed">
-                    執筆者情報は準備中です。
-                  </p>
-                  
-                  <p class="text-gray-400 font-noto leading-relaxed">
-                    公開まで今しばらくお待ちください。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-</BaseLayout> 
+      </div>
+    </section>
+  </div>
+</BaseLayout>

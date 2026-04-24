@@ -1,5 +1,6 @@
 ---
 // src/components/ArticleCard.astro
+// カテゴリ色は完全なクラス文字列で指定（Tailwind JIT 対応 — Design.md / AGENTS.md）
 export interface Props {
   title: string;
   description: string;
@@ -12,70 +13,97 @@ export interface Props {
 
 const { title, description, category, date, tags, slug, image } = Astro.props;
 
-// カテゴリーに応じた色を設定
-const getCategoryColor = (category: string) => {
-  switch (category) {
-    case '最新動向':
-      return 'blue';
-    case '頻出トピック':
-      return 'green';
-    case 'コア文書':
-      return 'yellow';
-    case '学問的探究':
-      return 'purple';
-    default:
-      return 'gray';
+const CATEGORY_STYLES: Record<
+  string,
+  {
+    borderHover: string;
+    badge: string;
+    titleLink: string;
+    cta: string;
   }
+> = {
+  最新動向: {
+    borderHover: 'hover:border-sky-400/40',
+    badge: 'text-sky-300 bg-sky-500/15 group-hover:bg-sky-500/25',
+    titleLink: 'text-mun-text hover:text-sky-300',
+    cta: 'text-sky-400 hover:text-sky-300',
+  },
+  頻出トピック: {
+    borderHover: 'hover:border-emerald-400/40',
+    badge: 'text-emerald-300 bg-emerald-500/15 group-hover:bg-emerald-500/25',
+    titleLink: 'text-mun-text hover:text-emerald-300',
+    cta: 'text-emerald-400 hover:text-emerald-300',
+  },
+  コア文書: {
+    borderHover: 'hover:border-amber-400/40',
+    badge: 'text-amber-300 bg-amber-500/15 group-hover:bg-amber-500/25',
+    titleLink: 'text-mun-text hover:text-amber-300',
+    cta: 'text-amber-400 hover:text-amber-300',
+  },
+  学問的探究: {
+    borderHover: 'hover:border-violet-400/40',
+    badge: 'text-violet-300 bg-violet-500/15 group-hover:bg-violet-500/25',
+    titleLink: 'text-mun-text hover:text-violet-300',
+    cta: 'text-violet-400 hover:text-violet-300',
+  },
+  default: {
+    borderHover: 'hover:border-mun-border',
+    badge: 'text-mun-text-secondary bg-mun-elevated/60 group-hover:bg-mun-elevated',
+    titleLink: 'text-mun-text hover:text-mun-accent',
+    cta: 'text-mun-accent hover:text-mun-link',
+  },
 };
 
-const categoryColor = getCategoryColor(category);
+const styles = CATEGORY_STYLES[category] ?? CATEGORY_STYLES.default;
 ---
 
-<article class={`group card-bg rounded-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 shadow-lg hover:shadow-2xl border-2 border-transparent hover:border-${categoryColor}-400/50 hover:shadow-${categoryColor}-500/20`}>
+<article
+  class={`group card-bg rounded-lg overflow-hidden transition-colors duration-200 shadow-sm border border-mun-border ${styles.borderHover}`}
+>
   {image && (
     <div class="relative h-48 overflow-hidden">
-      <img 
-        src={image} 
+      <img
+        src={image}
         alt={title}
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
     </div>
   )}
-  
+
   <div class="p-6">
     <div class="flex items-center justify-between mb-3">
-      <span class={`text-sm text-${categoryColor}-400 font-bold bg-${categoryColor}-400 bg-opacity-10 px-3 py-1 rounded-full group-hover:bg-${categoryColor}-400 group-hover:bg-opacity-20 transition-all duration-300`}>
+      <span
+        class={`text-sm font-bold px-3 py-1 rounded-full transition-all duration-300 ${styles.badge}`}
+      >
         {category}
       </span>
-      <span class="text-xs text-gray-500">
+      <span class="text-xs text-mun-text-muted">
         {new Date(date).toLocaleDateString('ja-JP')}
       </span>
     </div>
-    
+
     <h2 class="font-bold text-xl mb-3 h-16 font-noto line-clamp-2">
-      <a href={`/articles/${slug}`} class={`hover:text-${categoryColor}-400 transition-colors`}>
+      <a href={`/articles/${slug}`} class={`transition-colors ${styles.titleLink}`}>
         {title}
       </a>
     </h2>
-    
-    <p class="text-gray-400 text-sm h-20 overflow-hidden mb-4">
+
+    <p class="text-mun-text-muted text-sm h-20 overflow-hidden mb-4">
       {description}
     </p>
-    
-    <div class="flex flex-wrap gap-2 mb-4">
-      {tags.slice(0, 3).map((tag: string) => (
-        <span class="text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">
-          {tag}
-        </span>
-      ))}
-    </div>
-    
-    <a href={`/articles/${slug}`} class={`inline-flex items-center text-${categoryColor}-400 hover:text-${categoryColor}-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300`}>
+
+    {tags.length > 0 && (
+      <p class="text-xs text-mun-text-muted mb-4 leading-relaxed line-clamp-2">
+        {tags.slice(0, 4).join('、')}
+      </p>
+    )}
+
+    <a
+      href={`/articles/${slug}`}
+      class={`text-sm font-medium border-b border-transparent group-hover:border-current pb-0.5 transition-colors ${styles.cta}`}
+    >
       続きを読む
-      <svg class={`w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-      </svg>
     </a>
   </div>
 </article>
@@ -87,4 +115,4 @@ const categoryColor = getCategoryColor(category);
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-</style> 
+</style>

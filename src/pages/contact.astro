@@ -2,9 +2,6 @@
 // src/pages/contact.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import FormField from '../components/FormField.astro';
-import Button from '../components/Button.astro';
-import Icon from '../components/Icon.astro';
 import Message from '../components/Message.astro';
 import Stack from '../components/Stack.astro';
 
@@ -17,7 +14,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <main id="main-content" class="pt-16">
+  <div class="page-main pt-16">
     <!-- ページヘッダー -->
     <PageHeader 
       title="お問い合わせ" 
@@ -28,14 +25,9 @@ const breadcrumbs = [
     <!-- フォームセクション -->
     <section class="flex justify-center items-center min-h-[70vh] py-8 px-2">
       <div class="w-full max-w-2xl">
-        <div class="bg-[#181818] rounded-2xl shadow-xl border border-gray-700 p-6 md:p-10">
+        <div class="bg-mun-surface rounded-lg border border-mun-border p-6 md:p-10 shadow-sm">
           <Stack gap="large">
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-green-500 bg-opacity-10 rounded-full flex items-center justify-center mr-4">
-                <Icon name="check" size="medium" class="text-green-400" />
-              </div>
-              <h2 class="text-2xl md:text-3xl font-bold font-noto">お問い合わせフォーム</h2>
-            </div>
+            <h2 class="text-xl md:text-2xl font-semibold font-noto text-mun-text">お問い合わせフォーム</h2>
             <Message type="info">
               以下のフォームに必要事項をご記入の上、送信してください。
             </Message>
@@ -65,34 +57,34 @@ const breadcrumbs = [
               #sib-container input[type="email"]:focus,
               #sib-container select:focus,
               #sib-container textarea:focus {
-                border-color: #3b82f6 !important;
-                background-color: #0f0f0f !important;
+                border-color: #6b9eff !important;
+                background-color: #0b0f14 !important;
                 outline: none !important;
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+                box-shadow: 0 0 0 3px rgba(107, 158, 255, 0.15) !important;
               }
               
               /* より強い指定でfocusスタイルを強制適用 */
               #sib-container .input:focus {
-                border-color: #3b82f6 !important;
-                background-color: #0f0f0f !important;
+                border-color: #6b9eff !important;
+                background-color: #0b0f14 !important;
                 outline: none !important;
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+                box-shadow: 0 0 0 3px rgba(107, 158, 255, 0.15) !important;
               }
               
               #sib-container .sib-form-block__button {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #6b9eff 0%, #8f7df0 100%);
                 border-radius: 0.75rem;
                 padding: 1rem 2.5rem;
                 font-weight: 700;
                 font-size: 1.1rem;
-                color: #fff;
+                color: #0b0f14;
                 border: none;
                 margin-top: 1.5rem;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-                transition: background 0.2s;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+                transition: background 0.2s, opacity 0.2s;
               }
               #sib-container .sib-form-block__button:hover {
-                background: linear-gradient(135deg, #5a67d8 0%, #6b21a8 100%);
+                opacity: 0.92;
               }
               #sib-container .entry__error {
                 border-radius: 0.5rem;
@@ -104,8 +96,8 @@ const breadcrumbs = [
                 background-color: #222;
               }
               #sib-container .checkbox_tick_positive {
-                background-color: #667eea;
-                border-color: #667eea;
+                background-color: #6b9eff;
+                border-color: #6b9eff;
               }
               
               /* optionタグのスタイル */
@@ -127,5 +119,5 @@ const breadcrumbs = [
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
