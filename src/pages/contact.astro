@@ -5,7 +5,8 @@ import PageHeader from '../components/PageHeader.astro';
 import Message from '../components/Message.astro';
 import Stack from '../components/Stack.astro';
 
-const pageTitle = "Contact | お問い合わせ";
+const pageTitle = "お問い合わせ | MUNOLOGY";
+const pageDescription = "MUNOLOGYへのご質問・ご意見。編集方針やコンテンツに関するお問い合わせ窓口です。";
 
 const breadcrumbs = [
   { label: "ホーム", href: "/" },
@@ -13,12 +14,12 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <div class="page-main pt-16">
     <!-- ページヘッダー -->
     <PageHeader 
       title="お問い合わせ" 
-      description="お問い合わせやご質問がございましたら、お気軽にご連絡ください。"
+      description="掲載・誤りの指摘、学びに関するご意見など、丁寧に目を通します。営業的な内容は返信を控える場合があります。"
       breadcrumbs={breadcrumbs}
     />
 

@@ -21,7 +21,10 @@ const shareUrl = currentUrl.href;
 const shareTitle = article.data.title;
 ---
 
-<BaseLayout pageTitle={article.data.title}>
+<BaseLayout
+  pageTitle={`${article.data.title} | MUNOLOGY`}
+  pageDescription={article.data.description}
+>
     <div class="page-main pt-16">
     <header class="page-hero">
       <div class="container mx-auto px-6 py-12 md:py-16 max-w-3xl">

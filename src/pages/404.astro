@@ -1,14 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "404 | ページが見つかりません";
+const pageTitle = "ページが見つかりません | MUNOLOGY";
 const launchDate = new Date('2025-11-17');
 const currentDate = new Date();
 const isLaunched = currentDate >= launchDate;
 ---
 
 {isLaunched ? (
-  <BaseLayout pageTitle={pageTitle}>
+  <BaseLayout
+    pageTitle={pageTitle}
+    pageDescription="指定のURLにページが見つかりません。MUNOLOGY（Beyond the Gavel）。"
+  >
     <div class="page-main pt-16">
       <header class="page-hero">
         <div class="page-hero-inner">
@@ -30,7 +33,7 @@ const isLaunched = currentDate >= launchDate;
     </div>
   </BaseLayout>
 ) : (
-  <BaseLayout pageTitle="Coming Soon | MUNOLOGY">
+  <BaseLayout pageTitle="近日公開 | MUNOLOGY" pageDescription="MUNOLOGY（Beyond the Gavel）の公開に向けた準備中のページです。">
     <div class="page-main pt-16">
       <header class="page-hero">
         <div class="page-hero-inner max-w-2xl">

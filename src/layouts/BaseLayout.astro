@@ -5,12 +5,16 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 export interface Props {
+  /** ドキュメントタイトル（原則「ページ名 | MUNOLOGY」で統一。トップは短く `MUNOLOGY` 可） */
   pageTitle: string;
   pageDescription?: string;
   pageImage?: string;
 }
 
-const { pageTitle, pageDescription, pageImage } = Astro.props;
+const defaultDescription =
+  "会期の向こう側で、国際法・国際政治を根拠と論点で読む。編集型の探究メディア MUNOLOGY（Beyond the Gavel）。";
+const { pageTitle, pageDescription = defaultDescription, pageImage } = Astro.props;
+const metaDescription = pageDescription || defaultDescription;
 ---
 
 <!DOCTYPE html>
@@ -18,8 +22,8 @@ const { pageTitle, pageDescription, pageImage } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle} | MUNOLOGY</title>
-    <meta name="description" content={pageDescription} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -50,7 +54,7 @@ const { pageTitle, pageDescription, pageImage } = Astro.props;
     
     <!-- Open Graph -->
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={pageDescription} />
+    <meta property="og:description" content={metaDescription} />
     {pageImage && <meta property="og:image" content={pageImage} />}
   </head>
   <body class="bg-mun-bg text-mun-text font-sans antialiased min-h-screen flex flex-col">

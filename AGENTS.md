@@ -17,7 +17,8 @@
 | `src/components/` | 再利用 UI。 |
 | `src/content/` | `articles` コレクションとスキーマ `config.ts`。 |
 | `public/` | 静的配信（画像・ファビコン）。 |
-| `docs/` | Git 手順など。デザイン前提は `docs/PREMISES.md`。 |
+| `docs/` | Git 手順、方針文書。理念の正本は `docs/PHILOSOPHY.md`、前提チェックは `docs/PREMISES.md`。 |
+| `docs/DESIGN.md` | [Google DESIGN.md 形式](https://github.com/google-labs-code/design.md)（トークン YAML＋本文）。`npm run design:lint`。人間用の長文仕様は `Design.md`（大小文字非区別 FS ではルート `DESIGN.md` と混同しないよう `docs/` 配下に置く）。 |
 
 ## レイアウトと HTML の鉄則
 
@@ -34,11 +35,12 @@
 
 ## スタイル変更の「正」の所在
 
-1. **Design.md** — トークン・ルールの仕様書。
+1. **Design.md** — トークン・ルールの仕様書（人間可読の主文書）。
 2. **`src/styles/global.css`** — `:root` 変数、`.markdown-content`、`.hero-gradient-text`、`.card-bg` 等。
 3. **`tailwind.config.mjs`** — `theme.extend.colors.mun` と `fontFamily.sans`。
+4. **docs/DESIGN.md** — エージェント向けの [DESIGN.md 形式](https://github.com/google-labs-code/design.md)（`@google/design.md` で `lint` / `export` 可能）。トークン追加時は **Design.md ／ CSS ／ Tailwind** に加え、**`docs/DESIGN.md` の YAML** を揃え、`npm run design:lint` を通す。
 
-新しい色を足す場合は **三箇所を同期**する。
+新しい色を足す場合は **実装三箇所＋ `docs/DESIGN.md`** を同期する。
 
 ## Tailwind の注意
 
@@ -70,6 +72,8 @@ npm run type-check
 
 ## 参考リンク
 
+- [docs/PHILOSOPHY.md](./docs/PHILOSOPHY.md) — 存在理由と編集上の方針（迷ったら先にこれ）
 - [Design.md](./Design.md) — トークン・コンポーネント・ Markdown ルール
+- [docs/DESIGN.md](./docs/DESIGN.md) — 機械可読トークン（`npm run design:lint`）
 - [docs/PREMISES.md](./docs/PREMISES.md) — ステークホルダー前提
 - [README.md](./README.md) — 起動・構造の概要

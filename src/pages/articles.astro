@@ -15,16 +15,17 @@ articles.forEach((article) => {
   articlesByCategory[category].push(article);
 });
 
-const pageTitle = "Articles | 記事一覧";
+const pageTitle = "記事一覧 | MUNOLOGY";
+const pageDescription = "国際法・国際政治の記事をカテゴリ別に。最新動向・頻出トピック・コア文書・学問的探究。Beyond the Gavel。";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <div class="page-main pt-16">
     <header class="page-hero">
       <div class="page-hero-inner">
         <h1 class="page-display-title">記事一覧</h1>
         <p class="page-lead">
-          模擬国連に関連するトピックを、法学・政治学の観点から整理した読み物です。カテゴリごとに並べています。
+          会議用の要約の先、条文・判例・動向を扱う読み物を、<strong class="text-mun-text font-semibold">根拠と論点が追える</strong>形でカテゴリ別に掲げています。学術的・エディトリアルな厳しさを保ちつつ、web で到達しやすい導線に整えています。
         </p>
       </div>
     </header>

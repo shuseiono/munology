@@ -1,16 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "About | MUNOLOGYについて";
+const pageTitle = "このサイトについて | MUNOLOGY";
+const pageDescription =
+  "MUNOLOGYのミッション、会期の向こう側の学び、学問的探究とアクセスの公平性。Beyond the Gavel。";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <div class="page-main pt-16">
     <header class="page-hero">
       <div class="page-hero-inner">
-        <h1 class="page-display-title">MUNOLOGYについて</h1>
+        <h1 class="page-display-title">
+          <span class="block text-xs text-mun-text-muted font-normal tracking-wide font-sans mb-2" lang="en"
+            >Beyond the Gavel</span
+          >
+          <span class="block">MUNOLOGYについて</span>
+        </h1>
         <p class="page-lead">
-          模擬国連の体験を、法学・政治学の観点から読み解き、学びに接続することを目指しています。
+          模擬国連の<strong class="text-mun-text font-semibold">会期の外側・あと</strong>まで続く学びを、高校以上の探究者のために整えた編集型の読み物です。法学・政治学の枠組みを示し、根拠と論点が追える言葉で、国際法・国際政治を深く理解する手助けをします。
         </p>
       </div>
     </header>
@@ -21,10 +28,10 @@ const pageTitle = "About | MUNOLOGYについて";
           <h2 class="section-heading mb-6">ミッション</h2>
           <div class="space-y-5 text-mun-text-secondary leading-relaxed font-noto">
             <p>
-              MUNOLOGYは、模擬国連という実践のあとに続く学びの場として、高校生以上の読者が国際法・国際政治を深く理解する手助けをしたいと考えています。
+              会議で扱うテーマは、条文の解釈、歴史的経緯、学説の争い、現実の外交——会期の中に収まりきらないことが多くあります。それらを「勝つための材料」に還元しきると、模擬国連で学問の一端に触れられるという利点まで失われがちです。MUNOLOGYは、その<strong class="text-mun-text font-semibold">厚みを持続的な理解へつなぐ</strong>ための「接続端子」になることを目指します。
             </p>
             <p class="text-mun-text-muted">
-              教育資源へのアクセスに差がある現実を踏まえ、質の高い解説テキストをオープンに届けることを重視します。
+              教育資源へのアクセスに差がある現実を踏まえ、質の高い解説テキストを可能な形でオープンに届けることを重視します。
             </p>
           </div>
         </div>
@@ -39,21 +46,56 @@ const pageTitle = "About | MUNOLOGYについて";
             <div>
               <h3 class="font-semibold text-mun-text font-noto mb-3">学問的探究</h3>
               <p class="text-sm text-mun-text-muted leading-relaxed font-noto">
-                法学・政治学の枠組みを明示し、根拠と論点が追える文章を心がけます。
+                法学・政治学の枠組みを明示し、根拠と論点が追える文章を心がけます。装飾記号に頼らず、タイポと余白で階層を示します。
               </p>
             </div>
             <div>
               <h3 class="font-semibold text-mun-text font-noto mb-3">アクセスの公平性</h3>
               <p class="text-sm text-mun-text-muted leading-relaxed font-noto">
-                大学の講義に行けない読者にも、同等の議論に踏み込める材料を提供します。
+                大学の講義に物理的に行けない読者にも、同等の深さの議論に足を踏み入れる材料を提供します。
               </p>
             </div>
             <div>
               <h3 class="font-semibold text-mun-text font-noto mb-3">次の世代</h3>
               <p class="text-sm text-mun-text-muted leading-relaxed font-noto">
-                国際社会で責任を持って働く人材の育成に、コンテンツの面から貢献したいと考えています。
+                国際社会で責任を持って働く人材の育成に、コンテンツの面から補助的に貢献したいと考えています。
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-mun-border py-14 md:py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="section-heading mb-6">立ち位置</h2>
+          <p class="text-mun-text-secondary font-noto leading-relaxed mb-8">
+            次の対応は、編集・採択の物差しです。学びの接続を目指しつつ、大学教育の代替を名乗ったり、会場の噂話を取り上げたりすることはしません。
+          </p>
+          <div class="overflow-x-auto rounded-lg border border-mun-border">
+            <table class="w-full text-left text-sm font-noto">
+              <thead>
+                <tr class="border-b border-mun-border bg-mun-surface/50">
+                  <th class="px-4 py-3 font-semibold text-mun-text">主に担うこと</th>
+                  <th class="px-4 py-3 font-semibold text-mun-text-muted">主役にしないこと（例）</th>
+                </tr>
+              </thead>
+              <tbody class="text-mun-text-secondary divide-y divide-mun-border">
+                <tr>
+                  <td class="px-4 py-3 align-top">条約・判例・概念の、根拠つきの解説</td>
+                  <td class="px-4 py-3 align-top text-mun-text-muted">会場の噂話・個人攻撃的な中傷</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 align-top">探究に耐えるカテゴリと文章</td>
+                  <td class="px-4 py-3 align-top text-mun-text-muted">浅い釣り文句だけのまとめ</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 align-top">会議直後の学びへの接続</td>
+                  <td class="px-4 py-3 align-top text-mun-text-muted">高等教育そのものの代替を自称すること</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

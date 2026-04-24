@@ -7,10 +7,12 @@ import Button from '../components/Button.astro';
 import Grid from '../components/Grid.astro';
 import Stack from '../components/Stack.astro';
 
-const pageTitle = "Home | MUNOLOGY";
+const pageTitle = "MUNOLOGY | 国際法と模擬国連の探究";
+const pageDescription =
+  "会期の向こう側で、条約・判例・概念を法と政治の枠で読み解く。高校以上向けの編集型読み物（Beyond the Gavel）。";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <div class="page-main">
     <!-- ヒーロー: 画像＋単純な暗幕。見出しはグラデーションを使わない -->
     <section
@@ -20,10 +22,13 @@ const pageTitle = "Home | MUNOLOGY";
       <div class="absolute inset-0 bg-mun-bg/82" aria-hidden="true"></div>
       <div class="relative z-10 container mx-auto max-w-3xl">
         <h1 class="page-display-title text-4xl md:text-5xl lg:text-6xl">
-          DRの向こう側へ
+          <span class="block text-xs text-mun-text-muted font-normal tracking-wide font-sans" lang="en"
+            >Beyond the Gavel</span
+          >
+          <span class="block mt-2">DRの向こう側へ</span>
         </h1>
         <p class="page-lead mt-6">
-          MUNOLOGYは、会議の体験をより深い洞察に導き、高校以上の学びへと繋げていくためのサイトです。模擬国連に関連したトピックを、法学・政治学の観点から探究します。
+          模擬国連の会期が終わったあとでも続く、地続きの学びのために。MUNOLOGYは、国際法・国際政治のトピックを<strong class="text-mun-text font-semibold">根拠と論点が追える</strong>文章で届ける編集型サイトです。高校以上の探究者向けに、法学・政治学の枠組みを示しながら積み上げます。
         </p>
         <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Button href="/articles" variant="primary" size="large" ariaLabel="記事一覧へ">
@@ -41,7 +46,7 @@ const pageTitle = "Home | MUNOLOGY";
       <div class="container mx-auto px-6">
         <div class="mb-12 max-w-3xl">
           <h2 class="section-heading text-2xl md:text-3xl">おすすめ記事</h2>
-          <p class="section-lead">模擬国連に関連した記事から一部を掲載しています。</p>
+          <p class="section-lead">会議用の要約の先、条文・学説・動向を読み解く記事の一部です。</p>
         </div>
 
         <Grid cols={3} gap="large">
@@ -101,10 +106,10 @@ const pageTitle = "Home | MUNOLOGY";
           <h2 class="section-heading text-2xl md:text-3xl">MUNOLOGYについて</h2>
           <div class="section-lead mt-6 space-y-6 text-mun-text-secondary">
             <p>
-              私たちは、模擬国連という熱狂の先に、日本の高校生の知の土台を広げ、未来の国際社会を担う人材の育成に寄与したいと考えています。
+              議場の熱量そのものではなく、<strong class="text-mun-text font-semibold">会期のあと</strong>に残る教養と探究に寄与したいと考えています。図書室や良い新聞の解説欄のように、装飾より<strong class="text-mun-text font-semibold">可読性と階層</strong>を優先し、国際社会で責任を持つ次の世代の土台づくりに、テキストの面から補助したい、という願いです。
             </p>
             <p class="text-mun-text-muted text-base">
-              情報へのアクセスの偏りを少しでも減らすという問題意識のもと、探究のための読み物を丁寧に積み上げていきます。
+              教育資源へのアクセスに差がある現実を踏まえ、可能な形でオープンに、質の高い解説を積み上げていきます。
             </p>
           </div>
           <div class="mt-10">
@@ -121,15 +126,15 @@ const pageTitle = "Home | MUNOLOGY";
       <div class="container mx-auto px-6">
         <div class="mb-12 max-w-3xl">
           <h2 class="section-heading text-2xl md:text-3xl">記事の分かれ方</h2>
-          <p class="section-lead">一覧ページでは、次のような観点で記事をまとめています。</p>
+          <p class="section-lead">一覧では、次の観点で分類し、学びの導線をはっきり示しています（詳しくは <a href="/about" class="text-mun-link border-b border-mun-link/30 hover:border-mun-accent">このサイトについて</a>）。</p>
         </div>
 
-        <Grid cols={3} gap="large">
-          <Card ariaLabel="コア文書">
+        <Grid cols={4} gap="large">
+          <Card ariaLabel="最新動向">
             <Stack gap="small" align="stretch">
-              <h3 class="font-semibold text-lg font-noto text-mun-text">コア文書</h3>
+              <h3 class="font-semibold text-lg font-noto text-mun-text">最新動向</h3>
               <p class="text-sm text-mun-text-muted leading-relaxed">
-                国連憲章や基本的な国際法文書に関する解説
+                判例・外交・条約の運用など、タイムリーな論点
               </p>
             </Stack>
           </Card>
@@ -141,11 +146,19 @@ const pageTitle = "Home | MUNOLOGY";
               </p>
             </Stack>
           </Card>
-          <Card ariaLabel="最新動向">
+          <Card ariaLabel="コア文書">
             <Stack gap="small" align="stretch">
-              <h3 class="font-semibold text-lg font-noto text-mun-text">最新動向</h3>
+              <h3 class="font-semibold text-lg font-noto text-mun-text">コア文書</h3>
               <p class="text-sm text-mun-text-muted leading-relaxed">
-                判例・外交・条約運用などの新しい動き
+                国連憲章など、議論の前提となる文書
+              </p>
+            </Stack>
+          </Card>
+          <Card ariaLabel="学問的探究">
+            <Stack gap="small" align="stretch">
+              <h3 class="font-semibold text-lg font-noto text-mun-text">学問的探究</h3>
+              <p class="text-sm text-mun-text-muted leading-relaxed">
+                理論・概念を丁寧に扱う、長めの記事
               </p>
             </Stack>
           </Card>

@@ -4,7 +4,9 @@
 
 ## ドキュメント（設計・運用）
 
+- [docs/PHILOSOPHY.md](./docs/PHILOSOPHY.md) — **MUNOLOGY の存在理由と思想的立脚**（新規執筆・方針の正本）
 - [Design.md](./Design.md) — デザイントークン、タイポ、コンポーネント、記事 Markdown ルール
+- [docs/DESIGN.md](./docs/DESIGN.md) — エージェント向け [DESIGN.md 形式](https://github.com/google-labs-code/design.md)（YAML トークン＋本文）。`npm run design:lint` で検証
 - [AGENTS.md](./AGENTS.md) — リポジトリ作業規約（人間・AI 共通）
 - [docs/PREMISES.md](./docs/PREMISES.md) — ブランド・計測・ホスティング等の前提チェックリスト
 
@@ -22,6 +24,7 @@
 │   ├── pages/            # ページ
 │   └── styles/           # スタイル（global.css に :root トークン）
 ├── docs/                 # ドキュメント
+│   ├── DESIGN.md         # @google/design.md 形式（エージェント向けトークン）
 │   ├── PREMISES.md        # 前提・合意事項
 │   ├── GIT_GUIDE.md
 │   └── GIT_QUICK_REFERENCE.md
@@ -39,6 +42,8 @@
 | `npm run build` | 本番用ビルド |
 | `npm run preview` | ビルドのプレビュー |
 | `npm run type-check` | `astro check` による型・テンプレートチェック |
+| `npm run design:lint` | [docs/DESIGN.md](docs/DESIGN.md) を `@google/design.md` で検証（WCAG・参照整合など） |
+| `npm run design:export:tailwind` | `docs/DESIGN.md` → Tailwind 風 JSON（stdout。差分確認用） |
 | `npm run clean` | ビルドファイルをクリア |
 
 ## Git・コーディング
@@ -86,4 +91,4 @@ id: "unique-id"
 
 ---
 
-*MUNOLOGY - Beyond the Conference*
+*MUNOLOGY - Beyond the Gavel*

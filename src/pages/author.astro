@@ -1,15 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "Author | 執筆者";
+const pageTitle = "執筆者 | MUNOLOGY";
+const pageDescription = "MUNOLOGYの記事を担う執筆者の紹介。順次、プロフィールを掲げる予定です。";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <div class="page-main pt-16">
     <header class="page-hero">
       <div class="page-hero-inner">
         <h1 class="page-display-title">執筆者</h1>
-        <p class="page-lead">MUNOLOGYの記事を書いている人たちについて、順次掲載していく予定です。</p>
+        <p class="page-lead">
+          学問的探究とアクセスの公平性を大切にし、<strong class="text-mun-text font-semibold">根拠と論点が追える</strong>文章を心がけている執筆者を、順次紹介していく予定です。
+        </p>
       </div>
     </header>
 
