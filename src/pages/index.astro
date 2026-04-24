@@ -14,12 +14,11 @@ const pageDescription =
 
 <BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <div class="page-main">
-    <!-- ヒーロー: 画像＋単純な暗幕。見出しはグラデーションを使わない -->
+    <!-- ヒーロー: hero-index.png + 暗幕。画像差し替えは public/images/hero-index.png -->
     <section
-      class="relative flex min-h-[min(85vh,52rem)] items-center px-6 py-20 md:py-28"
-      style="background: url('/images/index_fv.png') center/cover no-repeat;"
+      class="index-hero relative flex min-h-[min(85vh,52rem)] items-center px-6 py-20 md:py-28"
     >
-      <div class="absolute inset-0 bg-mun-bg/82" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-mun-bg/80" aria-hidden="true"></div>
       <div class="relative z-10 container mx-auto max-w-3xl">
         <h1 class="page-display-title text-4xl md:text-5xl lg:text-6xl">
           <span class="block text-xs text-mun-text-muted font-normal tracking-wide font-sans" lang="en"

@@ -406,6 +406,14 @@
     @apply mt-3 text-mun-text-secondary text-base leading-relaxed font-noto max-w-2xl;
   }
 
+  /* トップヒーロー（画像は public/images/hero-index.png。差し替えは同名で上書き） */
+  .index-hero {
+    background-color: var(--mun-bg);
+    background-image: url("/images/hero-index.png");
+    background-size: cover;
+    background-position: center;
+  }
+
   @media (max-width: 768px) {
     .markdown-content {
       font-size: 1rem;
