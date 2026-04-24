@@ -1,7 +1,8 @@
 <header
-  class="py-4 px-6 md:px-12 flex justify-between items-center bg-mun-elevated/85 backdrop-blur-md sticky top-0 z-50 border-b border-mun-border"
+  class="py-3.5 sm:py-4 bg-mun-elevated/85 backdrop-blur-md sticky top-0 z-50 border-b border-mun-border"
 >
-  <a href="/" class="flex items-center space-x-3 text-mun-text-secondary hover:text-mun-text transition-colors">
+  <div class="layout-shell flex justify-between items-center gap-4">
+  <a href="/" class="flex min-w-0 items-center gap-2 sm:gap-3 text-mun-text-secondary hover:text-mun-text transition-colors">
     <picture>
       <source media="(max-width: 768px)" srcset="/images/typo_dark_rev2.png" />
       <img
@@ -11,11 +12,11 @@
         style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
       />
     </picture>
-    <span class="text-xs text-mun-text-muted hidden md:block">Beyond the Gavel</span>
+    <span class="text-[0.65rem] sm:text-xs text-mun-text-muted hidden sm:block truncate">Beyond the Gavel</span>
   </a>
 
   <!-- Desktop Navigation -->
-  <nav class="hidden md:flex items-center space-x-6 font-bold text-sm text-mun-text-secondary">
+  <nav class="hidden md:flex flex-1 justify-end items-center gap-5 lg:gap-6 font-bold text-sm text-mun-text-secondary shrink-0">
     <a href="/" class="hover:text-mun-text transition-colors">Home</a>
     <a href="/about" class="hover:text-mun-text transition-colors">About</a>
     <a href="/articles" class="hover:text-mun-text transition-colors">Articles</a>
@@ -36,6 +37,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
     </svg>
   </button>
+  </div>
 </header>
 
 <!-- Mobile Menu Overlay -->

@@ -19,6 +19,7 @@
 | `public/` | 静的配信（画像・ファビコン）。 |
 | `docs/` | Git 手順、方針文書。理念の正本は `docs/PHILOSOPHY.md`、前提チェックは `docs/PREMISES.md`。 |
 | `docs/DESIGN.md` | [Google DESIGN.md 形式](https://github.com/google-labs-code/design.md)（トークン YAML＋本文）。`npm run design:lint`。人間用の長文仕様は `Design.md`（大小文字非区別 FS ではルート `DESIGN.md` と混同しないよう `docs/` 配下に置く）。 |
+| レイアウト | `src/styles/global.css` の `layout-shell` / `layout-narrow` / `layout-hero-inner` 等。新規セクションは `container mx-auto px-6` ではなく上記＋ [Design.md](./Design.md) スペーシング節。 |
 
 ## レイアウトと HTML の鉄則
 

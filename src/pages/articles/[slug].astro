@@ -27,7 +27,7 @@ const shareTitle = article.data.title;
 >
     <div class="page-main pt-16">
     <header class="page-hero">
-      <div class="container mx-auto px-6 py-12 md:py-16 max-w-3xl">
+      <div class="page-hero-inner">
         <div class="text-sm text-mun-text-muted font-noto mb-4 space-y-1">
           <p class="text-mun-text-secondary">{article.data.category}</p>
           <p>
@@ -36,7 +36,7 @@ const shareTitle = article.data.title;
             </time>
           </p>
         </div>
-        <h1 class="page-display-title text-3xl md:text-4xl lg:text-5xl">
+        <h1 class="page-display-title lg:tracking-tight">
           {article.data.title}
         </h1>
         <p class="page-lead mt-6">
@@ -56,9 +56,9 @@ const shareTitle = article.data.title;
     </header>
 
     <!-- 記事本文 -->
-    <section class="py-12 md:py-20">
-      <div class="container mx-auto px-6">
-        <article class="max-w-4xl mx-auto">
+    <section class="py-12 md:py-20 lg:py-24">
+      <div class="layout-shell">
+        <article class="layout-article min-w-0 max-w-full">
           <div class="markdown-content">
             <Content />
           </div>
@@ -66,8 +66,9 @@ const shareTitle = article.data.title;
       </div>
     </section>
 
-    <section class="py-12 border-t border-mun-border">
-      <div class="container mx-auto px-6 max-w-3xl">
+    <section class="py-12 md:py-14 border-t border-mun-border">
+      <div class="layout-shell">
+        <div class="layout-narrow">
         <p class="text-sm font-medium text-mun-text-secondary font-noto mb-4">共有</p>
         <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-noto">
           <button
@@ -86,17 +87,20 @@ const shareTitle = article.data.title;
             Xで投稿
           </a>
         </div>
+        </div>
       </div>
     </section>
 
-    <section class="py-12">
-      <div class="container mx-auto px-6 max-w-3xl">
+    <section class="py-12 md:py-14">
+      <div class="layout-shell">
+        <div class="layout-narrow">
         <a
           href="/articles"
           class="text-sm font-medium text-mun-text-secondary hover:text-mun-accent border-b border-mun-border hover:border-mun-accent transition-colors font-noto"
         >
           記事一覧へ戻る
         </a>
+        </div>
       </div>
     </section>
   </div>

@@ -71,8 +71,9 @@
 
 ## スペーシング・シェイプ
 
-- **コンテナ**: `container mx-auto px-6` を基本。
-- **セクション縦余白**: `py-16 md:py-24` を標準。
+- **横枠（サイト全体）**: `layout-shell` = `max-w-7xl mx-auto` + レスポンシブ横パディング（`px-4 sm:px-6 lg:px-8`）。**長文1カラム**は `layout-narrow` または `layout-article`（`max-w-3xl`）。**幅広ブロック**は `layout-wide`（`max-w-5xl`）や `max-w-6xl` 相当を `layout-shell` 内に配置。ヘッダー・フッター・本文で横位置を揃える。
+- **トップFVのテキスト列**: `layout-hero-inner`（`max-w-3xl` + ガター）。
+- **セクション縦余白**: `py-16 md:py-20 lg:py-24` 系を目安。`section-pad` ユーティリティも可。
 - **角丸**: カード `rounded-xl`、ボタン `rounded-lg`、ピル型 CTA は `rounded-full` を限定利用。
 - **ヘッダー下オフセット**: 固定ヘッダー下のページ本体先頭に `pt-16`（`.page-main` 相当）。
 

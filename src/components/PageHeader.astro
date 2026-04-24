@@ -10,7 +10,7 @@ const { title, description, breadcrumbs, actions } = Astro.props;
 ---
 
 <header class="page-header bg-mun-surface/90 border-b border-mun-border">
-  <div class="container mx-auto px-6 py-8">
+  <div class="layout-shell py-8 md:py-10">
     {breadcrumbs && breadcrumbs.length > 0 && (
       <nav class="mb-4" aria-label="パンくずリスト">
         <ol class="flex items-center space-x-2 text-sm text-mun-text-muted">
@@ -38,12 +38,14 @@ const { title, description, breadcrumbs, actions } = Astro.props;
       </nav>
     )}
 
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-      <div class="mb-4 md:mb-0">
-        <h1 class="text-3xl md:text-4xl font-bold text-mun-text mb-2 font-noto">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-8">
+      <div class="min-w-0 max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl font-bold text-mun-text mb-2 font-noto">
           {title}
         </h1>
-        {description && <p class="text-mun-text-secondary text-lg font-noto">{description}</p>}
+        {description && (
+          <p class="text-mun-text-secondary text-base sm:text-lg font-noto leading-relaxed">{description}</p>
+        )}
       </div>
 
       {actions && (

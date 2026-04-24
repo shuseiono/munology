@@ -16,11 +16,11 @@ const pageDescription =
   <div class="page-main">
     <!-- ヒーロー: hero-index.png + 暗幕。画像差し替えは public/images/hero-index.png -->
     <section
-      class="index-hero relative flex min-h-[min(85vh,52rem)] items-center px-6 py-20 md:py-28"
+      class="index-hero relative flex min-h-[min(76vh,40rem)] sm:min-h-[min(82vh,48rem)] lg:min-h-[min(88vh,52rem)] items-center py-20 md:py-28 xl:py-32"
     >
       <div class="absolute inset-0 bg-mun-bg/80" aria-hidden="true"></div>
-      <div class="relative z-10 container mx-auto max-w-3xl">
-        <h1 class="page-display-title text-4xl md:text-5xl lg:text-6xl">
+      <div class="layout-hero-inner">
+        <h1 class="page-display-title text-4xl sm:text-5xl md:text-5xl lg:text-6xl">
           <span class="block text-xs text-mun-text-muted font-normal tracking-wide font-sans" lang="en"
             >Beyond the Gavel</span
           >
@@ -41,8 +41,8 @@ const pageDescription =
     </section>
 
     <!-- おすすめ記事 -->
-    <section id="articles" class="border-t border-mun-border py-16 md:py-20">
-      <div class="container mx-auto px-6">
+    <section id="articles" class="border-t border-mun-border py-16 md:py-20 lg:py-24">
+      <div class="layout-shell">
         <div class="mb-12 max-w-3xl">
           <h2 class="section-heading text-2xl md:text-3xl">おすすめ記事</h2>
           <p class="section-lead">会議用の要約の先、条文・学説・動向を読み解く記事の一部です。</p>
@@ -99,8 +99,8 @@ const pageDescription =
     </section>
 
     <!-- サイトについて -->
-    <section id="about" class="border-t border-mun-border py-16 md:py-20">
-      <div class="container mx-auto px-6">
+    <section id="about" class="border-t border-mun-border py-16 md:py-20 lg:py-24">
+      <div class="layout-shell">
         <div class="max-w-3xl">
           <h2 class="section-heading text-2xl md:text-3xl">MUNOLOGYについて</h2>
           <div class="section-lead mt-6 space-y-6 text-mun-text-secondary">
@@ -121,8 +121,8 @@ const pageDescription =
     </section>
 
     <!-- カテゴリ（テキスト中心・大きなアイコン円なし） -->
-    <section id="categories" class="border-t border-mun-border py-16 md:py-20">
-      <div class="container mx-auto px-6">
+    <section id="categories" class="border-t border-mun-border py-16 md:py-20 lg:py-24">
+      <div class="layout-shell">
         <div class="mb-12 max-w-3xl">
           <h2 class="section-heading text-2xl md:text-3xl">記事の分かれ方</h2>
           <p class="section-lead">一覧では、次の観点で分類し、学びの導線をはっきり示しています（詳しくは <a href="/about" class="text-mun-link border-b border-mun-link/30 hover:border-mun-accent">このサイトについて</a>）。</p>
